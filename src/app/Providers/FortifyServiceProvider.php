@@ -30,14 +30,18 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        RateLimiter::for('login', function (Request $request) {
-            $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
-
-            return Limit::perMinute(5)->by($throttleKey);
+        Fortify::registerView(function () {
+            return view('auth.register');
         });
 
-        RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        RateLimiter::for('login', function (Request $request) {
+            $email =$request->input(Fortify::username());
+
+            return Limit::perMinute(10)->by($email . $request->ip());
         });
     }
 }
