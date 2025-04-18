@@ -41,7 +41,7 @@
             </label>
             <input class="register-form__input" type="password" name="password" id="password">
                 <p class="register-form__error-message">
-                    @error('email')
+                    @error('password')
                     {{ $message }}
                     @enderror
                 </p>
@@ -50,9 +50,9 @@
         <div class="register-form__group">
             <label class="register-form__label" for="password_confirmation">確認用パスワード
             </label>
-            <input class="register-form__input" type="password_confirmation" name="password_confirmation" id="password_confirmation">
+            <input class="register-form__input" type="password" name="password_confirmation" id="password_confirmation">
                 <p class="register-form__error-message">
-                    @error('password')
+                    @error('password_confirmation')
                     {{ $message }}
                     @enderror
                 </p>
