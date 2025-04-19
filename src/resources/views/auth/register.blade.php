@@ -63,7 +63,7 @@
 
         <div class="register-header__link">
             <p class="register-form__text">すでにアカウントをお持ちの方は</p>
-            <a href="{{ route('login') }}">login</a>
+            <a href="/login">login</a>
         </div>
     </form>
 </div>
