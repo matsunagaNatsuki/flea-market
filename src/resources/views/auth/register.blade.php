@@ -9,6 +9,7 @@
 <div class="register-form">
     <h2 class="register-form__heading content__heading">新規登録</h2>
 </div>
+
 <p>メールアドレスとパスワードを入力してください</p>
 
 <div class="register-form__inner">
@@ -59,6 +60,11 @@
         </div>
 
             <input class="register-form__btn btn" type="submit" value="登録">
+
+        <div class="register-header__link">
+            <p class="register-form__text">すでにアカウントをお持ちの方は</p>
+            <a href="{{ route('login') }}">login</a>
+        </div>
     </form>
 </div>
 
