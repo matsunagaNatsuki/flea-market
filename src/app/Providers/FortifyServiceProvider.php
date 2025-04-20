@@ -38,6 +38,8 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
+        Fortify::redirects('register', '/mypage/profile');
+
         RateLimiter::for('login', function (Request $request) {
             $email =$request->input(Fortify::username());
 
