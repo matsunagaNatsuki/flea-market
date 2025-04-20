@@ -4,14 +4,11 @@
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 @endsection
 
-<h1>flea market</h1>
 @section('content')
 <div class="register-form">
     <h2 class="register-form__heading content__heading">新規登録</h2>
 </div>
-
-<p>メールアドレスとパスワードを入力してください</p>
-
+<p>お名前、メールアドレス、パスワードを入力してください</p>
 <div class="register-form__inner">
     <form class="register-form__form" action="/register" method="post">
         @csrf
@@ -67,5 +64,6 @@
         </div>
     </form>
 </div>
+@endsection
 
 
