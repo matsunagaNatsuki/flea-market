@@ -50,28 +50,5 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        Fortify::authenticateUsing(function ($request) {
-            $validator = Validator::make($request->all(), [
-                'email' => ['required', 'email'],
-                'password' => ['required']
-            ], [
-                'email,required' => 'メールアドレスを入力してください',
-                'password.required' =>'パスワードを入力してください',
-            ]);
-
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422);
-            }
-
-            $validated = $validator->validated();
-
-            $user = User::where('email', $validated['email'])->first();
-
-            if (!$user || !Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-                return response()->json(['errors' => ['login' => 'ログイン情報が登録されていません。']], 422);
-            }
-
-            return $user;
-        });
     }
 }
