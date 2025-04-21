@@ -16,7 +16,7 @@
                 <label class="login-form__label" for="email">メールアドレス
                 </label>
                 <input class="login-form__input" type="email" name="email" id="email" >
-                <p class="register-form__error-message">
+                <p>
                     @error('email')
                     {{ $message }}
                     @enderror
