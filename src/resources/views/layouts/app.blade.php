@@ -8,7 +8,6 @@
 </head>
 <body>
     <header>
-        <h1>Flea Market</h1>
     </header>
     <main>
         @yield('content')

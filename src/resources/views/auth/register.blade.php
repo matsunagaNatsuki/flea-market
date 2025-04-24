@@ -6,14 +6,13 @@
 
 @section('content')
 <div class="register-form">
-    <h2 class="register-form__heading content__heading">新規登録</h2>
+    <h2 class="register-form__heading content__heading">会員登録</h2>
 </div>
-<p>お名前、メールアドレス、パスワードを入力してください</p>
 <div class="register-form__inner">
     <form class="register-form__form" action="/register" method="post">
         @csrf
         <div class="register-form__group">
-            <label class="register-form__label" for="name">お名前
+            <label class="register-form__label" for="name">ユーザー名
             </label>
             <input class="register-form__input" type="text" name="name" id="name">
                 <p class="register-form__error-message">
@@ -56,11 +55,8 @@
                 </p>
         </div>
 
-            <input class="register-form__btn btn" type="submit" value="登録">
-
-        <div class="register-header__link">
-            <p class="register-form__text">すでにアカウントをお持ちの方は</p>
-            <a href="/login">login</a>
+            <input class="register-form__btn btn" type="submit" value="登録する">
+            <a href="/login">ログインはこちら</a>
         </div>
     </form>
 </div>

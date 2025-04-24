@@ -79,6 +79,7 @@ return [
         'numeric' => ':attributeには、:max以下の数字を指定してください。',
         'file'    => ':attributeには、:max KB以下のファイルを指定してください。',
         'string'  => ':attributeは、:max文字以下にしてください。',
+        'string'  => ':attributeは、:min文字以上にしてください。',
         'array'   => ':attributeの項目は、:max個以下にしてください。',
     ],
     'mimes'                => ':attributeには、:valuesタイプのファイルを指定してください。',
@@ -86,7 +87,7 @@ return [
     'min'                  => [
         'numeric' => ':attributeには、:min以上の数字を指定してください。',
         'file'    => ':attributeには、:min KB以上のファイルを指定してください。',
-        'string'  => ':attributeは、:min文字以上にしてください。',
+        'password'  => ':パスワードは、:min文字以上にしてください。',
         'array'   => ':attributeの項目は、:min個以上にしてください。',
     ],
     'multiple_of'          => 'The :attribute must be a multiple of :value',
@@ -133,6 +134,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
+    'min' => [
+        'string' => 'attributeは:min文字以上で入力してください'
+    ]
     ],
 
     /*
