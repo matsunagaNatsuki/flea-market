@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'password' => 'required'|'min:8',
+            'password' => 'required|min:8|confirmed'
         ];
     }
 
@@ -34,7 +34,7 @@ class LoginRequest extends FormRequest
         return [
             'email.required' => 'メールアドレスを入力してください',
             'password.required' => 'パスワードを入力してください',
-            'password.min' => 'パスワードは８文字以上で入力してください'
+            'password.min' => 'パスワードは８文字以上で入力してください',
 
         ];
     }

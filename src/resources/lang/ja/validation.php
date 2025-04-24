@@ -134,10 +134,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+    ],
 
     'min' => [
-        'string' => 'attributeは:min文字以上で入力してください'
-    ]
+        'string' => ':attributeは、:min文字以上で入力してください',
     ],
 
     /*
