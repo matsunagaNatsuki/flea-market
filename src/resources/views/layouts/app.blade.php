@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <img src="storage/images/app/logo.svg">
     </header>
     <main>
         @yield('content')
