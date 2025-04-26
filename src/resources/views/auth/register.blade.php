@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="/css/auth/register.css">
 @endsection
 
