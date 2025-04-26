@@ -10,7 +10,7 @@
 
 <body>
     <div class="logo">
-    <img src="storage/app/public/images/logo.svg" class="logo-img">
+    <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}"  alt="logo" class="logo__img">
     </div>
 
     <main>
