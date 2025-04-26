@@ -7,10 +7,9 @@
     @yield('css')
 </head>
 <body>
-    
-    <header>
-        
-    </header>
+    <div class=logo.svg>
+    <img src="storage/app/public/i/logo.svg">
+    </div>
     <main>
         @yield('content')
     </main>
