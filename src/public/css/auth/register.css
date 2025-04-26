@@ -8,10 +8,12 @@ body {
 }
 
 .register-form {
-    position: absolute;
+    position: relative;
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
 }
 
 
@@ -81,4 +83,15 @@ a {
     margin-top: 10px;
     text-decoration: none;
     color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .register-form {
+        width: 90%;
+        top: 20%;
+    }
+
+    .register-form__input, .register-form__btn  {
+        font-size: 16px;
+    }
 }
