@@ -10,7 +10,7 @@ body {
 .register-form {
     position: relative;
     top: 15%;
-    left: 50%;
+    left: 75%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 500px;
@@ -34,13 +34,13 @@ body {
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
-    margin-left: -270px;
+    margin-left: -215px;
 }
 
 .register-form__input {
     position: relative;
     margin-bottom: 5px;
-    width: 400%;
+    width: 340%;
     height: 40px;
     left: 50%;
     transform: translateX(-50%);
@@ -49,11 +49,6 @@ body {
     box-sizing: border-box;
 }
 
-.register-form__input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
 
 .register-form__error-message {
     color: red;
@@ -61,7 +56,7 @@ body {
 }
 
 .register-form__btn {
-    width: 330%;
+    width: 280%;
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -80,7 +75,7 @@ body {
 a {
     position: relative;
     left: 40px;
-    margin-top: 10px;
+    top: 40px;
     text-decoration: none;
     color: #007bff;
 }

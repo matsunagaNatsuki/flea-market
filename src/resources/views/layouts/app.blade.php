@@ -10,8 +10,9 @@
 
 <body>
     <div class="logo">
-    <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}" alt="logo" class="logo-img">
+        <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}" alt="logo" class="logo-img">
     </div>
+
 
     <main>
         @yield('content')
