@@ -9,9 +9,11 @@
 </head>
 
 <body>
+    <div class=top-bar></div>
     <div class="logo">
         <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}" alt="logo" class="logo-img">
     </div>
+
 
 
     <main>
