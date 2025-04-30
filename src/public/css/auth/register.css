@@ -74,7 +74,7 @@ body {
 
 a {
     position: relative;
-    left: 40px;
+    left: 50px;
     top: 40px;
     text-decoration: none;
     color: #007bff;
@@ -82,11 +82,12 @@ a {
 
 @media (max-width: 768px) {
     .register-form {
-        width: 90%;
+        width: 100%;
         top: 20%;
     }
 
     .register-form__input, .register-form__btn  {
         font-size: 16px;
+        width: 100%;
     }
 }
