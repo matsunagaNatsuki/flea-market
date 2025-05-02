@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->string('content', 255)->nullable(false);
             $table->timestamps();
 
-            $table->foreign('sell_id')->references('id')->on('selles')->onDelete('cascode');
+            $table->foreign('sell_id')->references('id')->on('sells')->onDelete('cascode');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

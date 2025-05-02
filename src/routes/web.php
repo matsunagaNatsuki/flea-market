@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\ProfileController;
 
-
+Route::get('/',[SellController::class, 'index']);
 Route::get('/?tab=mylist', [SellController::class, 'mylist']);
 Route::get('/item/:item_id', [SellController::class, 'item']);
 Route::post('/purchase/:item_id', [SellController::class,'purchase']);
