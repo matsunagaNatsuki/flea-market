@@ -9,10 +9,9 @@
 <div class="register-form">
     <h2 class="register-form__heading content__heading">会員登録</h2>
     <div class="register-form__inner">
-        <form class="register-form__form" action="/register" method="post">
+        <form class="register-form__form" action="/register" method="post" novalidate>
             @csrf
 
-            <!-- ユーザー名 -->
             <div class="register-form__group">
                 <label class="register-form__label" for="name">ユーザー名</label>
                 <input class="register-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
@@ -21,7 +20,6 @@
                 @enderror
             </div>
 
-            <!-- メールアドレス -->
             <div class="register-form__group">
                 <label class="register-form__label" for="email">メールアドレス</label>
                 <input class="register-form__input" type="email" name="email" id="email" value="{{ old('email') }}">
@@ -30,7 +28,6 @@
                 @enderror
             </div>
 
-            <!-- パスワード -->
             <div class="register-form__group">
                 <label class="register-form__label" for="password">パスワード</label>
                 <input class="register-form__input" type="password" name="password" id="password">
@@ -39,7 +36,6 @@
                 @enderror
             </div>
 
-            <!-- パスワード確認 -->
             <div class="register-form__group">
                 <label class="register-form__label" for="password_confirmation">確認用パスワード</label>
                 <input class="register-form__input" type="password" name="password_confirmation" id="password_confirmation">
