@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSelleCategoryTable extends Migration
+class CreateSellCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSelleCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('selle_category', function (Blueprint $table) {
+        Schema::create('sell_category', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('selle_id');
+            $table->unsignedBigInteger('sell_id');
             $table->unsignedBigInteger('category_id')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('selle_id')->references('id')->on('selles')->onDelete('cascade');
+            $table->foreign('sell_id')->references('id')->on('sell')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
@@ -31,6 +31,6 @@ class CreateSelleCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selle_category');
+        Schema::dropIfExists('sell_category');
     }
 }
