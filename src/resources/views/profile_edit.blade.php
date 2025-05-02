@@ -1,19 +1,39 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth/profile_edit.css') }}">
+@endsection
+
 @section('content')
-<div class="profile-edit">
-    <h2>プロフィール編集</h2>
-    <form action="/mypage/profile" method="post">
-        @csrf
-        <div>
-            <label for="name">名前</label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}">
-        </div>
-        <div>
-            <label for="email">メールアドレス</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}">
-        </div>
-        <button type="submit">保存</button>
-    </form>
+<div class="profile-form">
+    <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
+    <div class="profile-form__inner">
+        <form class="profile-form" action="edit_profile" method="post">
+            @csrf
+
+            <div class="profile-form__group">
+                <label class="profile-form__label" for="name">ユーザー名</label>
+                <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+            </div>
+
+            <div class="profile-form__group">
+                <label class="profile-form__label" for="postal">郵便番号</label>
+                <input class="profile-form__input" type="number" name="postal" id="postal" value="{{ old('postal') }}">
+            </div>
+
+            <div class="profile-form__group">
+                <label class="profile-form__label" for="address">住所</label>
+                <input class="profile-form__input" type="text" name="address" id="address" value="{{ old('address') }}">
+            </div>
+
+            <div class="profile-form__group">
+                <label class="profile-form__label" for="build">建物名</label>
+                <input class="profile-form__input" type="text" name="build" id="build" value="{{ old('build') }}">
+            </div>
+
+            <input class="profile-form__btn btn" type="submit" value="更新する">
+        </form>
+    </div>
 </div>
 @endsection
+
