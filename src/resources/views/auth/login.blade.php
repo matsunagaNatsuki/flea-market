@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
 @endsection
 
-
 @section('content')
 <div class="login-form">
     <h2 class="login-form__heading content__heading">ログイン</h2>
@@ -13,24 +12,32 @@
             @csrf
 
             <div class="login-form__group">
-                <label class="login-form__label" for="email">メールアドレス
-                </label>
-                <input class="login-form__input" type="email" name="email" id="email" >
-                <p class="login-form__error-message">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </p>
+                <label class="login-form__label" for="email">メールアドレス</label>
+                <input class="login-form__input" type="email" name="email" id="email">
+            @if ($errors->any())
+    <div class="errors">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
             </div>
 
             <div class="login-form__group">
                 <label class="login-form__label" for="password">パスワード</label>
                 <input class="login-form__input" type="password" name="password" id="password">
-                <p class="login-form__error-message">
-                    @error('password')
-                    {{ $message }}
-                    @enderror
-                </p>
+                @if ($errors->any())
+    <div class="errors">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             </div>
 
             <input class="login-form__btn btn" type="submit" value="ログインする">
@@ -39,5 +46,3 @@
     </div>
 </div>
 @endsection
-
-

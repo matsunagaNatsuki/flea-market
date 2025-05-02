@@ -63,5 +63,17 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+        Fortify::authenticateUsing(function ($request) {
+            $loginRequest =new LoginRequest();
+            $validated = $loginRequest->validate($request->all());
+
+            return auth()->attempt([
+                'email' => $validated['email'],
+                'password' => $validated['password']
+            ]);
+        });
+
+
+
     }
 }
