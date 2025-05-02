@@ -1,66 +1,56 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="/css/auth/register.css">
 @endsection
 
 @section('content')
 <div class="register-form">
     <h2 class="register-form__heading content__heading">会員登録</h2>
-</div>
-<div class="register-form__inner">
-    <form class="register-form__form" action="/register" method="post">
-        @csrf
-        <div class="register-form__group">
-            <label class="register-form__label" for="name">ユーザー名
-            </label>
-            <input class="register-form__input" type="text" name="name" id="name">
-                <p class="register-form__error-message">
-                    @error('name')
-                    {{ $message }}
-                    @enderror
-                </p>
-        </div>
+    <div class="register-form__inner">
+        <form class="register-form__form" action="/register" method="post">
+            @csrf
 
-        <div class="register-form__group">
-            <label class="register-form__label" for="email">メールアドレス
-            </label>
-            <input class="register-form__input" type="email" name="email" id="email">
-                <p class="register-form__error-message">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </p>
-        </div>
+            <!-- ユーザー名 -->
+            <div class="register-form__group">
+                <label class="register-form__label" for="name">ユーザー名</label>
+                <input class="register-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+                @error('name')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+            </div>
 
-        <div class="register-form__group">
-            <label class="register-form__label" for="password">パスワード
-            </label>
-            <input class="register-form__input" type="password" name="password" id="password">
-                <p class="register-form__error-message">
-                    @error('password')
-                    {{ $message }}
-                    @enderror
-                </p>
-        </div>
+            <!-- メールアドレス -->
+            <div class="register-form__group">
+                <label class="register-form__label" for="email">メールアドレス</label>
+                <input class="register-form__input" type="email" name="email" id="email" value="{{ old('email') }}">
+                @error('email')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+            </div>
 
-        <div class="register-form__group">
-            <label class="register-form__label" for="password_confirmation">確認用パスワード
-            </label>
-            <input class="register-form__input" type="password" name="password_confirmation" id="password_confirmation">
-                <p class="register-form__error-message">
-                    @error('password_confirmation')
-                    {{ $message }}
-                    @enderror
-                </p>
-        </div>
+            <!-- パスワード -->
+            <div class="register-form__group">
+                <label class="register-form__label" for="password">パスワード</label>
+                <input class="register-form__input" type="password" name="password" id="password">
+                @error('password')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- パスワード確認 -->
+            <div class="register-form__group">
+                <label class="register-form__label" for="password_confirmation">確認用パスワード</label>
+                <input class="register-form__input" type="password" name="password_confirmation" id="password_confirmation">
+                @error('password_confirmation')
+                    <p class="error-message">{{ $message }}</p>
+                @enderror
+            </div>
 
             <input class="register-form__btn btn" type="submit" value="登録する">
             <a href="/login">ログインはこちら</a>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 @endsection
-
-
