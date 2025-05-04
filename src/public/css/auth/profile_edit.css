@@ -40,10 +40,10 @@
 
 
 /* 送信ボタン */
-.profile-form__btn {
+.a {
     width: 100%;
     padding: 10px;
-    font-size: 18px;
+    font-size: 30px;
     background-color:red;
     border: none;
     border-radius: 5px;

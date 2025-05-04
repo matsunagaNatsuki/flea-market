@@ -10,7 +10,11 @@
     <div class="profile-form__inner">
         <form class="profile-form" action="edit_profile" method="post">
             @csrf
-
+            <div class="profile-form__group">
+                <label class="profile-form__label" for="profile_image">画像を選択する</label>
+                <input class="profile-form__input" type="file"
+                name="image" id="image">
+            </div>
             <div class="profile-form__group">
                 <label class="profile-form__label" for="name">ユーザー名</label>
                 <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
@@ -31,7 +35,9 @@
                 <input class="profile-form__input" type="text" name="build" id="build" value="{{ old('build') }}">
             </div>
 
-            <input class="profile-form__btn btn" type="submit" value="更新する">
+            <div class="btn">
+                <a href="/" type="submit">更新する</a>
+            </div>
         </form>
     </div>
 </div>

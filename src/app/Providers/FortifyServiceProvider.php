@@ -52,16 +52,26 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::authenticateUsing(function (Request $request) {
-            $request->validate([
+            $request()->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8',
+            ], [
+                'email.required' => 'メールアドレスを入力してください',
+                'email.email' => 'メールアドレスが正しい形式で入力されていません',
+                'password.required' => 'パスワードを入力してください',
+                'password.min' => 'パスワードは８文字以上で入力してください',
             ]);
 
-            $user = \App\Models\User::where('email', $request->email)->first();
 
-            if ($user && \Hash::check($request->password, $user->password)) {
+
+            $user = User::where('email', $request->input('email'))->first();
+
+            if ($user && Hash::check($request->input('password'),$user->password)) {
+                Auth::login($user);
                 return $user;
             }
+
+            return null;
         });
 
         Fortify::authenticateUsing(function ($request) {

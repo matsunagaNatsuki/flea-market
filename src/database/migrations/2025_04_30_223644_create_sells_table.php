@@ -15,13 +15,13 @@ class CreateSellsTable extends Migration
     {
         Schema::create('sells', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('name', 255);
-            $table->integer('price');
-            $table->string('description', 255);
-            $table->string('brand', 255);
-            $table->string('image', 255);
-            $table->unsignedBigInteger('condition_id');
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->string('name', 255)->nullable(false);
+            $table->integer('price')->nullable(false);
+            $table->string('description', 255)->nullable(false);
+            $table->string('brand', 255)->nullable();
+            $table->string('image', 255)->nullable(false);
+            $table->unsignedBigInteger('condition_id')->nullable(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
