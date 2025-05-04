@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Requests\LoginRequest;
 
 
@@ -51,6 +52,11 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
+        Route::post('/logout', function (Request $request) {
+            Auth::logout();
+            return redirect('/login')->with('message', 'ログアウトしました');
+        })->name('logout');
+
         Fortify::authenticateUsing(function (Request $request) {
             $request()->validate([
                 'email' => 'required|email',
@@ -61,8 +67,6 @@ class FortifyServiceProvider extends ServiceProvider
                 'password.required' => 'パスワードを入力してください',
                 'password.min' => 'パスワードは８文字以上で入力してください',
             ]);
-
-
 
             $user = User::where('email', $request->input('email'))->first();
 
@@ -83,8 +87,5 @@ class FortifyServiceProvider extends ServiceProvider
                 'password' => $validated['password']
             ]);
         });
-
-
-
     }
 }
