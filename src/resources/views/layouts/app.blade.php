@@ -8,13 +8,15 @@
 </head>
 
 <body>
-    <div class=top-bar></div>
+<div class="top-bar">
     <div class="logo">
         <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}" alt="logo" class="logo-img">
     </div>
-
-
-
+    <form method="POST" action="{{ url('/logout') }}">
+        @csrf
+        <button type="submit" class="logout">ログアウト</button>
+    </form>
+</div>
     <main>
         @yield('content')
     </main>
