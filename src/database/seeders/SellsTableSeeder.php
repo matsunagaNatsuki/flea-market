@@ -95,7 +95,7 @@ class SellsTableSeeder extends Seeder
                 'description' => $item['description'],
                 'image' => $item['image'],
                 'condition_id' => $conditions->firstWhere('id', $item['condition_name'])->id,
-                'user_id' => $user->id,
+                'user_id' => User::inRandomOrder()->first()->id,
             ]);
         }
     }
