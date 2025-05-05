@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Condition extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['condition_name'];
 
     public function sells(): HasMany
     {

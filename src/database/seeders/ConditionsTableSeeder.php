@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Condition;
 
 class ConditionsTableSeeder extends Seeder
 {
@@ -13,9 +14,11 @@ class ConditionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Season::create(['name' => '良好']);
-        Season::create(['name' => '目立った傷や汚れなし']);
-        Season::create(['name' => 'やや傷や汚れあり']);
-        Season::create(['name' => '状態が悪い']);
+        Condition::insert([
+            ['condition_name' => '良好'],
+            ['condition_name' => '目立った傷や汚れなし'],
+            ['condition_name' => 'やや傷や汚れあり'],
+            ['condition_name' => '状態が悪い',]
+        ]);
     }
 }
