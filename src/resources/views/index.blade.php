@@ -9,7 +9,6 @@
         <form action="localhost/" method = "POST">
         @csrf
             <div class="top-contents">
-
             </div>
 
         </form>
