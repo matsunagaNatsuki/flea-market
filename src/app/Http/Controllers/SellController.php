@@ -13,13 +13,10 @@ class SellController extends Controller
         return view('index', compact('sells'));
     }
 
-    public function item($item_id) {
-        $sell = Sell::find($item_id);
+    public function item($sell_id) {
+        $sell = Sell::find($sell_id);
 
-        if (!$sell) {
-            abort(404);
-        }
-        return view('item', compact('sell'));
+        return view('item');
     }
 
 }

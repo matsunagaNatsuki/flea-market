@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 
 Route::get('/',[SellController::class, 'index'])->name('home');
 Route::get('/?tab=mylist', [SellController::class, 'mylist']);
-Route::get('/item/:{item_id}', [SellController::class, 'item']);
+Route::get('/item/{item_id}', [SellController::class, 'item']);
 Route::post('/purchase/:item_id', [SellController::class,'purchase']);
 Route::get('/purchase/:item_id', [SellController::class,'purchase']);
 Route::get('/purchase/address/:item_id', [SellController::class,'updateAddress']);
