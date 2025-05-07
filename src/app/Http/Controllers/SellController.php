@@ -14,7 +14,7 @@ class SellController extends Controller
     }
 
     public function item($sell_id) {
-        $sell = Sell::find($sell_id);
+        
 
         return view('item');
     }

@@ -8,7 +8,7 @@
 <div class="profile-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
     <div class="profile-form__inner">
-        <form class="profile-form" action="edit_profile" method="post">
+        <form class="profile-form" action="/edit_profile" method="post">
             @csrf
             <div class="profile-form__group">
                 <label class="profile-form__label" for="profile_image">画像を選択する</label>

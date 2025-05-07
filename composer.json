@@ -1,0 +1,17 @@
+{
+    "name": "matsunaganatsuki/flea-market",
+    "autoload": {
+        "psr-4": {
+            "Matsunaganatsuki\\FleaMarket\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "松永菜月",
+            "email": "dicaiyue856@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^12.12"
+    }
+}
