@@ -33,3 +33,20 @@
     text-decoration: none;
     border: none;
 }
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.mypage {
+    position: absolute;
+    right: 250px;
+    top: 20px;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    background: none;
+}
+

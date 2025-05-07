@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\LoginRequest;
 
@@ -58,7 +59,7 @@ class FortifyServiceProvider extends ServiceProvider
         })->name('logout');
 
         Fortify::authenticateUsing(function (Request $request) {
-            $request()->validate([
+            $validated = $request->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ], [
@@ -70,7 +71,7 @@ class FortifyServiceProvider extends ServiceProvider
 
             $user = User::where('email', $request->input('email'))->first();
 
-            if ($user && Hash::check($request->input('password'),$user->password)) {
+            if ($user && Hash::check($validated['password'], $user->password)) {
                 Auth::login($user);
                 return $user;
             }
