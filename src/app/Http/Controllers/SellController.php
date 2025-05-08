@@ -14,9 +14,12 @@ class SellController extends Controller
     }
 
     public function item($sell_id) {
-        
 
         return view('item');
+    }
+
+    public function sell(Request $request) {
+        return view('sell');
     }
 
 }
