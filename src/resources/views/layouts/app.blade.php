@@ -10,7 +10,6 @@
 <body>
 
 <div class="top-bar">
-
     <div class="logo">
         <img src="{{ asset('storage/images/logo.svg') }}?v={{ time() }}" alt="logo" class="logo-img">
     </div>
@@ -22,6 +21,7 @@
         </form>
 
         <a href="{{ url('/mypage') }}" class="mypage">マイページ</a>
+        <a href="{{ url('/sell') }}" class="sell">出品</a>
     </div>
 </div>
 
