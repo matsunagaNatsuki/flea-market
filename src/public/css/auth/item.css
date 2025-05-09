@@ -1,0 +1,30 @@
+.sell-form__group {
+    width: 60%;
+    float: right;
+    padding: 20px;
+    margin-top: 10%;
+}
+
+.image-upload {
+    width: 35%;
+    float: left;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.image-upload img {
+    width: 100%;
+}
+
+.purchage-button {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+

@@ -14,12 +14,19 @@ class SellController extends Controller
     }
 
     public function item($sell_id) {
+    $sell = Sell::find($sell_id);
 
-        return view('item');
-    }
+    return view('item', compact('sell'));
+}
 
     public function sell(Request $request) {
         return view('sell');
+    }
+
+    public function purchase($sell_id) {
+    $sell = Sell::find($sell_id);
+
+    return view('purchase', compact('sell'));
     }
 
 }
