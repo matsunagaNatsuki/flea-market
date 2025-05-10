@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -11,33 +14,25 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function edit_profile(Request $request)
+    public function editProfile(Request $request)
     {
-        $user = auth()->user();
-
-        if ($request->isMethod('post')) {
-            $request->validate([
-            'name' => 'required|string|max:255',
-            'postal' => 'nullable|numeric',
-            'address' => 'nullable|string|max:255',
-            'build' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        $user = Auth::user();
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('images', 'public');
-            $user->image = $path;
+            $imagePath = $request->file('image')->store('profile_images', 'public');
+            $user->image = $imagePath;
+            $user->name =$request->name;
+            $user->postal = $request->address;
+            $user->build = $request->build;
+
+            $user->save();
+
+            return view('profile_edit');
         }
+    }
 
-        $user->name = $request->name;
-        $user->postal = $request->postal;
-        $user->address = $request->address;
-        $user->build = $request->build;
-        $user->save();
-
-        return redirect()->route('home')->with('success', 'プロフィールが更新されました');
-        }
-
-        return view('profile_edit', compact('user'));
+    public function showProfile()
+    {
+        return view('profile_edit');
     }
 }
