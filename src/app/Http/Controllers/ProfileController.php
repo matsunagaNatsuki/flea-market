@@ -21,14 +21,16 @@ class ProfileController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('profile_images', 'public');
             $user->image = $imagePath;
+        }
+
             $user->name =$request->name;
-            $user->postal = $request->address;
+            $user->postal = $request->postal;
+            $user->address = $request->address;
             $user->build = $request->build;
 
             $user->save();
 
             return view('profile_edit');
-        }
     }
 
     public function showProfile()
