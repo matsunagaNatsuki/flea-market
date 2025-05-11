@@ -6,8 +6,7 @@
 
 @section('content')
 <div class="sell-form__group">
-<h1>{{ $sell->name }}</h1>
-<p><label for="brand">ブランド名</label>
+<h2>{{ $sell->name }}</h2>
 </p>{{ $sell->brand }}
 <p>価格: {{ $sell->price }}円</p>
 <a href="{{ url('/purchase/' . $sell->id) }}" class="purchase-button">購入手続き</a>

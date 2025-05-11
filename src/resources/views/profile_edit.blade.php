@@ -8,7 +8,7 @@
 <div class="profile-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
     <div class="profile-form__inner">
-        <form class="profile-form" action="/edit_profile" method="post" enctype="multipart/form-data">
+        <form class="profile-form" action="/editProfile" method="post" enctype="multipart/form-data">
             @csrf
             <div class="profile-form__group">
                 <label class="profile-form__label" for="profile_image">画像を選択する</label>
@@ -17,12 +17,12 @@
             </div>
             <div class="profile-form__group">
                 <label class="profile-form__label" for="name">ユーザー名</label>
-                <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+                <input class="profile-form__input" type="text" name="user_id" id="user_id" value="{{ old('name') }}">
             </div>
 
             <div class="profile-form__group">
                 <label class="profile-form__label" for="postal">郵便番号</label>
-                <input class="profile-form__input" type="number" name="postal" id="postal" value="{{ old('postal') }}">
+                <input class="profile-form__input" type="number" name="postal_code" id="postal_code" value="{{ old('postal') }}">
             </div>
 
             <div class="profile-form__group">
@@ -32,7 +32,7 @@
 
             <div class="profile-form__group">
                 <label class="profile-form__label" for="build">建物名</label>
-                <input class="profile-form__input" type="text" name="build" id="build" value="{{ old('build') }}">
+                <input class="profile-form__input" type="text" name="building" id="building" value="{{ old('build') }}">
             </div>
 
             <div class="btn">
