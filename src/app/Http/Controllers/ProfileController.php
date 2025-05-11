@@ -18,19 +18,30 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        $request->validate([
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'postal_code' => 'required|string|max:8',
+        'address' => 'required|string|max:255',
+        'building' => 'nullable|string|max:255',
+    ]);
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('profile_images', 'public');
-            $user->image = $imagePath;
+        } else {
+            $imagePath = null;
         }
 
-            $user->name =$request->name;
-            $user->postal = $request->postal;
-            $user->address = $request->address;
-            $user->build = $request->build;
 
-            $user->save();
+            Profile::updateOrCreate(
+            ['user_id' => $user->id],
+            [
+            'image' => $imagePath,
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'building' => $request->building,
+            ]);
 
-            return view('profile_edit');
+            return redirect('/mypage/profile')->with('success', 'プロフィールを更新しました！');
     }
 
     public function showProfile()

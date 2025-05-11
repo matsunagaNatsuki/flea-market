@@ -1,0 +1,90 @@
+/* ✅ 商品情報のレイアウト */
+.purchase-form__group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* ✅ 商品画像を左側に配置 */
+.image-upload img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* ✅ 商品名と価格を画像の右側に配置 */
+.purchase-form__group h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.purchase-form__group p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ✅ 区切り線のデザイン */
+.separator {
+    width: 50%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 20px auto;
+}
+
+/* ✅ 支払い方法セレクトボックス */
+.payment-method {
+    text-align: center;
+    padding: 15px;
+}
+
+.payment-method select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* ✅ 配送先変更エリア */
+.address-change {
+    text-align: center;
+    padding: 15px;
+}
+
+.address-change a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.address-change a:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ 小計一覧のデザイン */
+.subtotal {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subtotal h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.subtotal p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}

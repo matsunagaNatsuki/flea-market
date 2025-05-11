@@ -23,10 +23,28 @@ class SellController extends Controller
         return view('sell');
     }
 
-    public function purchase($sell_id) {
-    $sell = Sell::find($sell_id);
+    public function purchase($item_id) {
+    $sell = Sell::find($item_id);
+
+    if(!$sell) {
+        abort(404);
+    }
 
     return view('purchase', compact('sell'));
     }
+
+    public function updateAddress($item_id)
+    {
+        $sell = Sell::find($item_id);
+
+        if (!$sell) {
+            abort(404);
+        }
+
+        return view('address', compact('sell'));
+    }
+
+
+
 
 }
