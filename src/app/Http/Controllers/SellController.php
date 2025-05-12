@@ -33,7 +33,7 @@ class SellController extends Controller
     return view('purchase', compact('sell'));
     }
 
-    public function updateAddress($item_id)
+    public function address($item_id)
     {
         $sell = Sell::find($item_id);
 
@@ -43,7 +43,6 @@ class SellController extends Controller
 
         return view('address', compact('sell'));
     }
-
 
 
 
