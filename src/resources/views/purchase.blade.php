@@ -36,6 +36,7 @@
     <a href='/'>購入する</a>
 
     <p>配送先</p>
-    <a href="{{ url('/purchase/address/' . $sell->id) }}">変更する</a>
+    <a href="/purchase/address/{{ $sell->id }}">変更する</a>
+
 
 
