@@ -12,7 +12,7 @@ Route::get('/purchase/{item_id}', [SellController::class,'purchase']);
 Route::get('/purchase/address/{item_id}', [SellController::class,'address']);
 Route::post('/purchase/address/{item_id}', [SellController::class,'address']);
 Route::get('/sell', [SellController::class, 'sell']);
-Route::post('/sell', [SellController::class, 'sell']);
+Route::post('/sell', [SellController::class, 'store']);
 Route::post('/sell/:item_id/like', [SellController::class, 'like']);
 Route::post('sell/:item_id/like', [SellController::class, 'comment']);
 Route::get('/mypage', [ProfileController::class, 'mypage']);
