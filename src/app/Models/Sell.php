@@ -21,4 +21,9 @@ class Sell extends Model
     {
         return $this->belongsTo(Condition::class, 'condition_id');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'sell_category');
+    }
 }
