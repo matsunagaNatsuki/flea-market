@@ -1,4 +1,4 @@
-@extend('layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/auth/sell.css') }}">
@@ -31,6 +31,32 @@
                         <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                     @endforeach
                 </select>
+
+                <h2 class="sell-date__heading content_heading">商品名と説明</h2>
+
+                <div class="sell-date__form group">
+                    <label class="sell-date__label" for="name">商品名</label>
+                    <input class="sell-date__input" type="text" id="name" name="name">
+                </div>
+
+                <div class="sell-date__form group">
+                    <label class="sell-date__label" for="brand">ブランド名</label>
+                    <input class="sell-date__input" type="text" id="brand" name="name">
+                </div>
+
+                <div class="sell-date__form group">
+                    <label class="sell-date__label" for="description">商品の説明</label>
+                    <input class="sell-date__input" type="text" id="description" name="description">
+                </div>
+
+                <div class="sell-date__form group">
+                    <label class="sell-date__label" for="price">販売価格</label>
+                    <input class="sell-date__input" type="text" id="price" name="price">
+                </div>
+
+                <div class="btn">
+                    <a href="/" type="submit">出品する</a>
+                </div>
 
 
 
