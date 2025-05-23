@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class LoginRequest extends FormRequest
 {
     /**
@@ -25,8 +24,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email',
-            'password' => 'required|min:8|confirmed'
+            'email' => 'required|email',
+            'password' => 'required|min:8',
         ];
     }
 
@@ -34,10 +33,9 @@ class LoginRequest extends FormRequest
     {
         return [
             'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスを入力してください',
+            'email.email' => 'メールアドレスが正しい形式で入力されていません',
             'password.required' => 'パスワードを入力してください',
             'password.min' => 'パスワードは８文字以上で入力してください',
         ];
     }
-
 }
