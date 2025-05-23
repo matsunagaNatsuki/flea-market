@@ -15,17 +15,17 @@
             <div class="login-form__group">
                 <label class="login-form__label" for="email">メールアドレス</label>
                 <input class="login-form__input" type="email" name="email" id="email">
-                @error('email')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
+                @if ($errors->has('email'))
+                    <p class="error">{{ $errors->first('email') }}</p>
+                @endif
             </div>
 
             <div class="login-form__group">
                 <label class="login-form__label" for="password">パスワード</label>
                 <input class="login-form__input" type="password" name="password" id="password">
-                @error('password')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
+                @if ($errors->has('password'))
+                    <p class="error">{{ $errors->first('password') }}</p>
+                @endif
             </div>
 
             <input class="login-form__btn btn" type="submit" value="ログインする">

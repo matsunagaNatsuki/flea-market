@@ -97,7 +97,7 @@ return [
     'password'             => 'パスワードが正しくありません。',
     'present'              => ':attributeが存在している必要があります。',
     'regex'                => ':attributeには、有効な正規表現を指定してください。',
-    'required'             => ':attributeを入力してください.',
+    'required'             => ':attributeを入力してください',
     'required_if'          => ':otherが:valueの場合、:attributeを入力してください。',
     'required_unless'      => ':otherが:values以外の場合、:attributeを指定してください。',
     'required_with'        => ':valuesが指定されている場合、:attributeも指定してください。',
@@ -139,6 +139,11 @@ return [
     'min' => [
         'string' => ':attributeは、:min文字以上で入力してください',
     ],
+
+    'attributes' => [
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ]
 
     /*
     |--------------------------------------------------------------------------

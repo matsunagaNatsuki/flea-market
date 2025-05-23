@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\LoginRequest;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -53,29 +54,30 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        Route::post('/logout', function (Request $request) {
-            Auth::logout();
-            return redirect('/login')->with('message', 'ログアウトしました');
-        })->name('logout');
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return redirect()->route('login');
+
+            }
+        });
+
 
         Fortify::authenticateUsing(function (Request $request) {
-            $user = User::where('email', $request->input('email'))->first();
+            $loginRequest = LoginRequest::createFrom($request);
+            $loginRequest->setContainer(app())->setRedirector(app('redirect'));
+            $loginRequest->validateResolved();
 
-            if ($user && Hash::check($validated['password'], $user->password)) {
-                Auth::login($user);
-                return $user;
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+            return $user;
             }
-
-            return null;
-        });
-
-        Fortify::authenticateUsing(function ($request) {
-            $loginRequest =new LoginRequest();
-            $validated = $loginRequest->validate($request->all());
-            return auth()->attempt([
-                'email' => $validated['email'],
-                'password' => $validated['password']
-            ]);
         });
     }
-}
+};
+
