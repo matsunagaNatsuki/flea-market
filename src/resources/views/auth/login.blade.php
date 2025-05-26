@@ -28,7 +28,7 @@
                 @endif
             </div>
 
-            <input class="login-form__btn btn" type="submit" value="ログインする">
+            <button class="login-form__btn btn" type="submit">ログインする</button>
             <a href="/register">会員登録はこちら</a>
         </form>
     </div>

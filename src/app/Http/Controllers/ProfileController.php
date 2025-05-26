@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -14,38 +15,26 @@ class ProfileController extends Controller
         return view('profile');
     }
 
-    public function editProfile(Request $request)
-    {
-        $user = Auth::user();
-
-        $request->validate([
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'postal_code' => 'required|string|max:8',
-        'address' => 'required|string|max:255',
-        'building' => 'nullable|string|max:255',
-    ]);
-
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('profile_images', 'public');
-        } else {
-            $imagePath = null;
-        }
-
-
-            Profile::updateOrCreate(
-            ['user_id' => $user->id],
-            [
-            'image' => $imagePath,
-            'postal_code' => $request->postal_code,
-            'address' => $request->address,
-            'building' => $request->building,
-            ]);
-
-            return redirect('/mypage/profile')->with('success', 'プロフィールを更新しました！');
-    }
-
     public function showProfile()
     {
+        $profile = Profile::where('user_id', Auth::id())->first();
+
         return view('profile_edit');
     }
+
+    public function editProfile(Request $request)
+    {
+        $profile = Profile::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'building' => $request->building ?? null,
+            'image' => $request->hasFile('image') ? $request->file('image')->store('profiles', 'public'): (Auth::User()->profile->image ?? null),
+        ]);
+        return redirect()->route('/');
+    }
 }
+
+
+
