@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+
+        <div class="category">
+            <div class="Osusume">
+                <p>おすすめ</p>
+            </div>
+            <div class="Mylist">
+                <p>マイリスト</p>
+        </div>
+        </div>
         <div class="image-container">
             <div class="row">
                 @foreach ($sells as $sell)

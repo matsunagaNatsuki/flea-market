@@ -9,7 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
 
-    protected $fillable = ['user_id', 'image', 'postal_code', 'address', 'building',];
+    protected $fillable = [
+        'user_id',
+        'name',
+        'image',
+        'postal_code',
+        'address',
+        'building',
+    ];
 
     public function user(): BelongsTo
     {

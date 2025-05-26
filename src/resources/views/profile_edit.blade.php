@@ -8,7 +8,7 @@
 <div class="profile-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
     <div class="profile-form__inner">
-        <form class="profile-form" action="/editProfile" method="post" enctype="multipart/form-data">
+        <form class="profile-form" action="/mypage/profile" method="post" enctype="multipart/form-data">
             @csrf
             <div class="profile-form__group">
                 <label class="profile-form__label" for="profile_image">画像を選択する</label>
@@ -17,26 +17,54 @@
             </div>
             <div class="profile-form__group">
                 <label class="profile-form__label" for="name">ユーザー名</label>
-                <input class="profile-form__input" type="text" name="user_id" id="user_id" value="{{ old('name') }}">
+                <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name') }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
             <div class="profile-form__group">
-                <label class="profile-form__label" for="postal">郵便番号</label>
-                <input class="profile-form__input" type="number" name="postal_code" id="postal_code" value="{{ old('postal') }}">
+                <label class="profile-form__label" for="postal_code">郵便番号</label>
+                <input class="profile-form__input" type="number" name="postal_code" id="postal_code" value="{{ old('postal_code') }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
             <div class="profile-form__group">
                 <label class="profile-form__label" for="address">住所</label>
                 <input class="profile-form__input" type="text" name="address" id="address" value="{{ old('address') }}">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
             <div class="profile-form__group">
-                <label class="profile-form__label" for="build">建物名</label>
-                <input class="profile-form__input" type="text" name="building" id="building" value="{{ old('build') }}">
+                <label class="profile-form__label" for="building">建物名</label>
+                <input class="profile-form__input" type="text" name="building" id="building" value="{{ old('building') }}">
             </div>
+            @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
             <div class="btn">
-                <a href="/" type="submit">更新する</a>
+                <button  type="submit">更新する</button>
             </div>
         </form>
     </div>
