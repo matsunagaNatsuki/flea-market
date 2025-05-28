@@ -32,7 +32,7 @@ class ProfileController extends Controller
             'building' => $request->building ?? null,
             'image' => $request->hasFile('image') ? $request->file('image')->store('profiles', 'public'): (Auth::User()->profile->image ?? null),
         ]);
-        return redirect();
+        return redirect('/');
     }
 }
 
