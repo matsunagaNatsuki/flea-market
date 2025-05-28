@@ -26,6 +26,8 @@ class SellController extends Controller
     }
 
     public function store (Request $request) {
+        // conditionテーブルの全データを取得
+        $conditions = Condition::all();
         $sell = sell::create($request->only(['name', 'price', 'description', 'brand', 'image', 'condition_id', 'user_id']));
 
         $category = Category::firstOrCreate(['name' => $request->category]);
@@ -35,6 +37,7 @@ class SellController extends Controller
         return redirect()->route('/');
 
     }
+
 
     public function purchase($item_id) {
     $sell = Sell::find($item_id);
