@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{ asset('css/auth/sell.css') }}">
 @endsection
 
+
+
 @section('content')
 <div class="sell-form">
     <h1 class="sell-form__heading content__heading">商品の出品</h1>
@@ -27,9 +29,10 @@
                 <label for="condition_id">商品の状態</label>
                 <select name="condition_id" id="condition_id" required>
                     <option value="" disabled selected>選択してください</option>
-                    @foreach ($conditions ?? [] as $condition)
-                        <option value="{{ $condition->id }}">{{ $condition->name }}</option>
-                    @endforeach
+                    @foreach ($conditions as $condition)
+                        <option value="{{ $condition->id }}" {{ old('condition_id') == $condition->id ? 'selected' : ''}}>
+                            {{ $condition->condition_name }}</option>
+                            @endforeach
                 </select>
 
                 <h2 class="sell-date__heading content_heading">商品名と説明</h2>

@@ -1,22 +1,71 @@
-.body {
-    font-family: 'Arial', sans-serif;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
 .sell-form {
-    position: relative;
-    left: 50%;
-    top: 300px;
-    transform: translateX(-50%);
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .sell-form__heading {
     font-size: 24px;
-    margin-left: 200px;
     font-weight: bold;
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
+.sell-form__inner {
+    padding: 20px;
+}
+
+.sell-form__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sell-form__input,
+.sell-detail__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.sell-form__input:focus,
+.sell-detail__input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.sell-form__label,
+.sell-detail__label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn a {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+
+    .btn a:hover {
+        background-color: #0056b3;
+    }
