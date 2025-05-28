@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ConditionsTableSeeder::class,
             SellsTableSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }
