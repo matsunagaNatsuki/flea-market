@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sell;
 use App\Models\Condition;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class SellController extends Controller
@@ -20,9 +21,12 @@ class SellController extends Controller
     return view('item', compact('sell'));
 }
 
-    public function sell(Request $request) {
+    public function sell(Request $request)
+    {
+        $categories = Category::all();
         $conditions = Condition::all();
-        return view('sell', compact('conditions'));
+
+        return view('sell', compact('categories', 'conditions'));
     }
 
     public function store (Request $request) {
