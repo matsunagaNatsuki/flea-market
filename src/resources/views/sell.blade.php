@@ -23,7 +23,11 @@
 
                 <div class="sell-detail__form group">
                     <label class="sell-detail__label" for="category">カテゴリー</label>
-                    <input class="sell-detail__input" type="text" id="category" name="name" autocomplete="off">
+                    <select class="sell-detail__input" id="category" name="category_id">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <label for="condition_id">商品の状態</label>
