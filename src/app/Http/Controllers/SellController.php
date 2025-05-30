@@ -6,6 +6,7 @@ use App\Models\Sell;
 use App\Models\Condition;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SellController extends Controller
 {
@@ -21,23 +22,31 @@ class SellController extends Controller
     return view('item', compact('sell'));
 }
 
-    public function sell(Request $request)
-    {
+    public function sell(Request $request){
+        $images = Storage::files('public/images');
         $categories = Category::all();
         $conditions = Condition::all();
 
-        return view('sell', compact('categories', 'conditions'));
+        return view('sell', compact('categories', 'conditions', 'images'));
     }
 
     public function store (Request $request) {
-        $conditions = Condition::all();
-        $sell = sell::create($request->only(['name', 'price', 'description', 'brand', 'image', 'condition_id', 'user_id']));
+        $sell = Sell::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'brand' => $request->brand,
+            'image' => $request->image,
+            'condition_id' => $request->condition_id,
+            'user_id' => auth()->id()
+        ]);
 
-        $category = Category::firstOrCreate(['name' => $request->category]);
+        $sell->save();
 
+        $category = Category::find($request->category_id);
         $sell->categories()->attach($category->id);
 
-        return redirect()->route('/');
+        return redirect('/');
 
     }
 

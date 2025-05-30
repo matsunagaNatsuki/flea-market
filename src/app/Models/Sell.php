@@ -10,7 +10,7 @@ class Sell extends Model
 {
     use HasFactory;
 
-    protected $fillable =['name', 'price', 'description', 'brand',  'image', 'user_id'];
+    protected $fillable =['name', 'price', 'description', 'brand',  'image', 'user_id', 'condition_id'];
 
     public function user(): BelongsTo
     {
