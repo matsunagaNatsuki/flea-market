@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+
     protected $fillable = ['name'];
 
     public function sells()
@@ -15,3 +16,5 @@ class Category extends Model
         return $this->belongsToMany(Sell::class, 'sell_category');
     }
 }
+
+

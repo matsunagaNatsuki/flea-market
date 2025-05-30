@@ -15,7 +15,27 @@
 
             <div class="sell-form__image">
                 <label class="sell-form__label" for="image">商品画像を選択する</label>
-                <input class="sell-form__input" type="file" name="image" id="image">
+                <select class="sell-form__input" name="image" id="image">
+                    @foreach($images as $image)
+                        <option value="{{basename($image) }}">{{basename($image)}}</option>
+                    @endforeach
+                </select>
+
+                <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
+
+                <script>
+                document. getElementById('image').addEventListener('change', function() {
+                    var selectedImage = this.value;
+                    var preview = document.getElementById('preview');
+
+                    if (selectedImage) {
+                        preview.src = "/storage/images/" + selectedImage;
+                        preview.style.display = "block";
+                    }else {
+                        preview.style.display ="none";
+                    }
+                })
+                </script>
             </div>
 
             <div class="sell-detail__form">
@@ -23,9 +43,9 @@
 
                 <div class="sell-detail__form group">
                     <label class="sell-detail__label" for="category">カテゴリー</label>
-                    <select class="sell-detail__input" id="category" name="category_id">
+                    <select class="sell-detail__input" id="category_id" name="category_id" required>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id }}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -43,26 +63,26 @@
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="name">商品名</label>
-                    <input class="sell-date__input" type="text" id="name" name="name">
+                    <input class="sell-date__input" type="text" id="name" name="name" required>
                 </div>
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="brand">ブランド名</label>
-                    <input class="sell-date__input" type="text" id="brand" name="name">
+                    <input class="sell-date__input" type="text" id="brand" name="brand">
                 </div>
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="description">商品の説明</label>
-                    <input class="sell-date__input" type="text" id="description" name="description">
+                    <input class="sell-date__input" type="text" id="description" name="description" required>
                 </div>
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="price">販売価格</label>
-                    <input class="sell-date__input" type="text" id="price" name="price">
+                    <input class="sell-date__input" type="text" id="price" name="price" required>
                 </div>
 
                 <div class="btn">
-                    <a href="/" type="submit">出品する</a>
+                    <button type="submit">出品する</button>
                 </div>
 
 
