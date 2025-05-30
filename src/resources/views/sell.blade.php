@@ -15,11 +15,7 @@
 
             <div class="sell-form__image">
                 <label class="sell-form__label" for="image">商品画像を選択する</label>
-                <select class="sell-form__input" name="image" id="image">
-                    @foreach($images as $image)
-                        <option value="{{basename($image) }}">{{basename($image)}}</option>
-                    @endforeach
-                </select>
+                <input type="file" class="sell-form__input" name="image" id="image" >
 
                 <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
 
@@ -44,6 +40,7 @@
                 <div class="sell-detail__form group">
                     <label class="sell-detail__label" for="category">カテゴリー</label>
                     <select class="sell-detail__input" id="category_id" name="category_id">
+                        <option value="" disabled selected>選択してください</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id }}">{{$category->name}}</option>
                         @endforeach
