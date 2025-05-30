@@ -7,6 +7,7 @@ use App\Models\Condition;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ExhibitionRequest;
 
 class SellController extends Controller
 {
@@ -30,7 +31,7 @@ class SellController extends Controller
         return view('sell', compact('categories', 'conditions', 'images'));
     }
 
-    public function store (Request $request) {
+    public function store (ExhibitionRequest $request) {
         $sell = Sell::create([
             'name' => $request->name,
             'price' => $request->price,
