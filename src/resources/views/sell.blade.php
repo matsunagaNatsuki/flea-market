@@ -43,7 +43,7 @@
 
                 <div class="sell-detail__form group">
                     <label class="sell-detail__label" for="category">カテゴリー</label>
-                    <select class="sell-detail__input" id="category_id" name="category_id" required>
+                    <select class="sell-detail__input" id="category_id" name="category_id">
                         @foreach($categories as $category)
                             <option value="{{$category->id }}">{{$category->name}}</option>
                         @endforeach
@@ -51,7 +51,7 @@
                 </div>
 
                 <label for="condition_id">商品の状態</label>
-                <select name="condition_id" id="condition_id" required>
+                <select name="condition_id" id="condition_id">
                     <option value="" disabled selected>選択してください</option>
                     @foreach ($conditions as $condition)
                         <option value="{{ $condition->id }}" {{ old('condition_id') == $condition->id ? 'selected' : ''}}>
@@ -63,7 +63,7 @@
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="name">商品名</label>
-                    <input class="sell-date__input" type="text" id="name" name="name" required>
+                    <input class="sell-date__input" type="text" id="name" name="name">
                 </div>
 
                 <div class="sell-date__form group">
@@ -73,17 +73,27 @@
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="description">商品の説明</label>
-                    <input class="sell-date__input" type="text" id="description" name="description" required>
+                    <input class="sell-date__input" type="text" id="description" name="description">
                 </div>
 
                 <div class="sell-date__form group">
                     <label class="sell-date__label" for="price">販売価格</label>
-                    <input class="sell-date__input" type="text" id="price" name="price" required>
+                    <input class="sell-date__input" type="text" id="price" name="price">
                 </div>
 
                 <div class="btn">
                     <button type="submit">出品する</button>
                 </div>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
 
 
