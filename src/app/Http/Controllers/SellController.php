@@ -13,15 +13,15 @@ class SellController extends Controller
 {
     public function index(Request $request)
     {
-        $query = $request->input('query');
-
+        $search = $request->input('search');
         $sells = Sell::query();
-        if ($query) {
-            $sells->where('name', 'LIKE', "{$query}%");
+
+        if ($search) {
+            $sells=$sells->where('name', 'LIKE', "{$search}%");
         }
         $sells = $sells->get();
 
-        return view('index', compact('sells', 'query'));
+        return view('index', compact('sells', 'search'));
     }
 
     public function item($sell_id) {
