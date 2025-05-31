@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-@if(isset($query) && $query != '')
-    <h2>検索結果：「{{$query}}」</h2>
+@if(isset($search) && $search != '')
+    <h2>検索結果：「{{$search}}」</h2>
 @endif
 </div>
         <div class="image-container">
