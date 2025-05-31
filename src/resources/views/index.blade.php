@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+@if(isset($query) && $query != '')
+    <h2>検索結果：「{{$query}}」</h2>
+@endif
+</div>
         <div class="image-container">
             <div class="row">
                 @foreach ($sells as $sell)

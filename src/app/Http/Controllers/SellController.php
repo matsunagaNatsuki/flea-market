@@ -11,10 +11,17 @@ use App\Http\Requests\ExhibitionRequest;
 
 class SellController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $sells = Sell::all();
-        return view('index', compact('sells'));
+        $query = $request->input('query');
+
+        $sells = Sell::query();
+        if ($query) {
+            $sells->where('name', 'LIKE', "{$query}%");
+        }
+        $sells = $sells->get();
+
+        return view('index', compact('sells', 'query'));
     }
 
     public function item($sell_id) {

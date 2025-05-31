@@ -22,5 +22,9 @@ Route::post('/mypage/profile', [ProfileController::class, 'editProfile']);
 Route::get('/mypage?tab=buy', [ProfileController::class, 'buyList']);
 Route::get('/mypage?tab=sell', [ProfileController::class, 'sellList']);
 
+Route::get('/favicon.ico', function() {
+    return response()->file(public_path('favicon.ico'));
+});
+
 
 
