@@ -23,9 +23,9 @@
 
     <div class="nav-links">
         <form method="POST" action="{{ url('/logout') }}">
+            @csrf
             <button type="submit" class="logout">ログアウト</button>
         </form>
-            @csrf
 
         <a href="{{ url('/mypage') }}" class="mypage">マイページ</a>
         <a href="{{ url('/sell') }}" class="sell">出品</a>
