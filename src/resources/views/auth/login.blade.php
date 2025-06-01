@@ -16,7 +16,7 @@
                 <label class="login-form__label" for="email">メールアドレス</label>
                 <input class="login-form__input" type="email" name="email" id="email">
                 @if ($errors->has('email'))
-                    <p class="error">{{ $errors->first('email') }}</p>
+                    <p class="login-form__error-message">{{ $errors->first('email') }}</p>
                 @endif
             </div>
 
@@ -24,7 +24,7 @@
                 <label class="login-form__label" for="password">パスワード</label>
                 <input class="login-form__input" type="password" name="password" id="password">
                 @if ($errors->has('password'))
-                    <p class="error">{{ $errors->first('password') }}</p>
+                    <p class="login-form__error-message">{{ $errors->first('password') }}</p>
                 @endif
             </div>
 

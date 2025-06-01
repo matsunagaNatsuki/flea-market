@@ -50,8 +50,13 @@
 }
 
 .login-form__error-message {
+    text-align: left;
+    display: block;
+    padding: 5px 20px;
     color: red;
     font-size: 14px;
+    margin-left: -130px;
+    width: 100%;
 }
 
 .login-form__btn {
