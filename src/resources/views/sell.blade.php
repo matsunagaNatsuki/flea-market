@@ -19,19 +19,23 @@
 
                 <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
 
-                <script>
-                document. getElementById('image').addEventListener('change', function() {
-                    var selectedImage = this.value;
-                    var preview = document.getElementById('preview');
+            <script>
+            document.getElementById('image').addEventListener('change',function(event) {
+                var file = event.target.files[0];
+                var preview = document.getElementById('preview');
 
-                    if (selectedImage) {
-                        preview.src = "/storage/images/" + selectedImage;
+                if(file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e){
+                        preview.src = e.target.result;
                         preview.style.display = "block";
-                    }else {
-                        preview.style.display ="none";
-                    }
-                })
-                </script>
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.style.display = "none";
+                }
+            });
+            </script>
             </div>
 
             <div class="sell-detail__form">
