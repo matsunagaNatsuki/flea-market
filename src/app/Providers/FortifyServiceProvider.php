@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Requests\LoginRequest;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use App\Http\controllers\LoginController;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -68,7 +69,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
 
-        Fortify::authenticateUsing(function (Request $request) {
+        Fortify::authenticateUsing(function (LoginRequest $request) {
             $loginRequest = LoginRequest::createFrom($request);
             $loginRequest->setContainer(app())->setRedirector(app('redirect'));
             $loginRequest->validateResolved();
