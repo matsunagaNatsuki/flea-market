@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
 Route::get('/',[SellController::class, 'index']);
 Route::post('/', [SellController::class,'index']);
@@ -21,6 +22,8 @@ Route::get('/mypage/profile', [ProfileController::class, 'showProfile']);
 Route::post('/mypage/profile', [ProfileController::class, 'editProfile']);
 Route::get('/mypage?tab=buy', [ProfileController::class, 'buyList']);
 Route::get('/mypage?tab=sell', [ProfileController::class, 'sellList']);
+
+Route::post('/login', [LoginController::class, 'store']);
 
 
 
