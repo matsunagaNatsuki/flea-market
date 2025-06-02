@@ -15,7 +15,6 @@ Route::get('/purchase/address/{item_id}', [SellController::class,'address']);
 Route::post('/purchase/address/{item_id}', [SellController::class,'address']);
 Route::get('/sell', [SellController::class, 'sell']);
 Route::post('/sell', [SellController::class, 'store']);
-Route::post('/profile', [SellController::class, 'update'])->name('profile.update');
 
 Route::post('/sell/:item_id/like', [SellController::class, 'like']);
 Route::post('sell/:item_id/like', [SellController::class, 'comment']);

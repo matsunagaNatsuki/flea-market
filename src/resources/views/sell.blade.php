@@ -10,7 +10,7 @@
 <div class="sell-form">
     <h1 class="sell-form__heading content__heading">商品の出品</h1>
     <div class="sell-form__inner">
-        <form class="sell-form__form" action="{{ route('profile.update')}}"  method="post" enctype="multipart/form-data">
+        <form class="sell-form__form" action="/sell"  method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="sell-form__image">
