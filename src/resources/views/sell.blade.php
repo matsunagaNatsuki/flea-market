@@ -10,12 +10,12 @@
 <div class="sell-form">
     <h1 class="sell-form__heading content__heading">商品の出品</h1>
     <div class="sell-form__inner">
-        <form class="sell-form__form" action="/sell" method="post" enctype="multipart/form-data">
+        <form class="sell-form__form" action="{{ route('profile.update')}}"  method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="sell-form__image">
                 <label class="sell-form__label" for="image">商品画像を選択する</label>
-                <input type="file" class="sell-form__input" name="image" id="image" >
+                <input type="file" class="sell-form__input" name="image" id="image">
 
                 <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
 

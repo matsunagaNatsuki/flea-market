@@ -59,6 +59,26 @@ class SellController extends Controller
     }
 
 
+    public function update(Request $request)
+    {
+        $image = $request->file('image');
+
+        if($image) {
+            $fileName = 'profile_' . uniqid() . '.' . $image->extension();
+            $path = $image->storeAs('public/profiles', $fileName);
+        }
+
+        return redirect('/');
+
+    }
+
+
+
+
+
+
+
+
     public function purchase($item_id) {
     $sell = Sell::find($item_id);
 
