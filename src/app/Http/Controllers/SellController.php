@@ -38,46 +38,29 @@ class SellController extends Controller
         return view('sell', compact('categories', 'conditions', 'images'));
     }
 
-    public function store (ExhibitionRequest $request) {
+    public function store(ExhibitionRequest $request) {
+        $image = $request->file('image');
+
+        if ($image) {
+            $fileName = 'profile_' . uniqid() . '.' . $image->extension();
+            $path = $image->storeAs('public/profiles', $fileName);
+            $imagePath = Storage::url($path);
+        } else {
+            $imagePath = null;
+        }
+
         $sell = Sell::create([
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
             'brand' => $request->brand,
-            'image' => $request->image,
+            'image' => $imagePath,
             'condition_id' => $request->condition_id,
             'user_id' => auth()->id()
         ]);
 
-        $sell->save();
-
-        $category = Category::find($request->category_id);
-        $sell->categories()->attach($category->id);
-
         return redirect('/');
-
     }
-
-
-    public function update(Request $request)
-    {
-        $image = $request->file('image');
-
-        if($image) {
-            $fileName = 'profile_' . uniqid() . '.' . $image->extension();
-            $path = $image->storeAs('public/profiles', $fileName);
-        }
-
-        return redirect('/');
-
-    }
-
-
-
-
-
-
-
 
     public function purchase($item_id) {
     $sell = Sell::find($item_id);
