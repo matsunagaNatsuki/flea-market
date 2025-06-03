@@ -43,6 +43,15 @@
     margin-right: 160px;
 }
 
+#preview {
+        margin-left: 35%;
+        transform: scale(1.5);
+        width:400px;
+        height:80px;
+        object-fit: contain;
+
+}
+
 .sell-detail__input {
     width: 100%;
     padding: 10px;
