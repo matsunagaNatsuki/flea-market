@@ -11,6 +11,15 @@
     margin-bottom: 20px;
 }
 
+.sell-detail__form {
+    margin-top: 60px;
+}
+
+.sell-detail__heading {
+    color: rgba(10, 10, 10, 0.592);
+    border-bottom: 1px solid black;
+}
+
 .sell-form__inner {
     padding: 20px;
 }
@@ -40,12 +49,12 @@
     font-size: 18px;
     cursor: pointer;
     margin-left: auto;
-    margin-right: 160px;
+    margin-right: 190px;
 }
 
 #preview {
         margin-left: 35%;
-        transform: scale(1.5);
+        transform: scale(2.5);
         width:400px;
         height:80px;
         object-fit: contain;
