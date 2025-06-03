@@ -49,11 +49,11 @@
 
                 <div class="sell-detail__form group">
                     <label class="sell-detail__label" for="category">カテゴリー</label>
-                    <select class="sell-detail__input" id="category_id" name="category_id">
-                        <option value="" disabled selected>選択してください</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->id }}">{{$category->name}}</option>
-                        @endforeach
+                        <ul class="category-list">
+                            @foreach($categories as $category)
+                                <li class="category-item">{{$category->name}}</li>
+                            @endforeach
+                        </ul>
                     </select>
                 </div>
 
