@@ -14,7 +14,8 @@
             @csrf
 
             <div class="sell-form__image">
-                <label class="sell-form__label" for="image">商品画像を選択する</label>
+                <label class="sell-form__label" for="image">商品画像</label>
+                <label for="image" class="sell-form__button">画像を選択する</label>
                 <input type="file" class="sell-form__input" name="image" id="image">
 
                 <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
