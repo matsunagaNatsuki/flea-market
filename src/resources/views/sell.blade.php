@@ -15,7 +15,7 @@
 
             <div class="sell-form__image">
                 <label class="sell-form__label" for="image">商品画像</label>
-                <label for="image" class="sell-form__button">画像を選択する</label>
+                <label for="image" class="sell-form__button" id="image-label">画像を選択する</label>
                 <input type="file" class="sell-form__input" name="image" id="image">
 
                 <img id="preview" src="" alt="選択した画像のプレビュー" style="display: none; max-width: 200px;">
@@ -23,6 +23,7 @@
             <script>
             document.getElementById('image').addEventListener('change',function(event) {
                 var file = event.target.files[0];
+                var label = document.getElementById('image-label');
                 var preview = document.getElementById('preview');
 
                 if(file) {
@@ -30,11 +31,15 @@
                     reader.onload = function(e){
                         preview.src = e.target.result;
                         preview.style.display = "block";
+                        label.style.visibility = 'hidden';
                     };
                     reader.readAsDataURL(file);
-                } else {
-                    preview.style.display = "none";
                 }
+
+                document.getElementById('preview').addEventListener('click', function() {
+                    document.getElementById('image').click();
+                }
+                )
             });
             </script>
             </div>
