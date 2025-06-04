@@ -7,7 +7,7 @@
     min-height: 100vh;
 }
 
-.login-form{
+.login-form {
     position: relative;
     left: 50%;
     top: 300px;
@@ -24,7 +24,7 @@
 }
 
 .login-form__group {
-    width: 100%;
+    width: 101%;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -84,4 +84,3 @@ a {
     text-decoration: none;
     color: #007bff;
 }
-
