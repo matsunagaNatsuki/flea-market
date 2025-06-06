@@ -56,8 +56,11 @@ class SellController extends Controller
             'brand' => $request->brand,
             'image' => $imagePath,
             'condition_id' => $request->condition_id,
+            'category_id' => $request->category_id,
             'user_id' => auth()->id()
         ]);
+
+        $sell->categories()->attach($request->category_id);
 
         return redirect('/');
     }

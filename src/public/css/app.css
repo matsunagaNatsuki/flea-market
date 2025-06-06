@@ -1,3 +1,4 @@
+/* 基本スタイル */
 .top-bar {
     position: fixed;
     top: 0;
@@ -6,64 +7,51 @@
     height: 80px;
     background-color: black;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .logo-img {
-    position: absolute;
-    top: 5px;
-    left: 0px;
-    width: 400px;
+    width: 250px;
     height: 50px;
     margin: 0;
-    padding: 10px 20px;
-    position: absolute;
     background-color: black;
     z-index: 1000;
 }
 
-.logout {
-    position: absolute;
-    right: 380px;
-    top: 20px;
-    font-size: 25px;
+.logout,
+.mypage,
+.sell {
+    font-size: 20px;
     color: white;
-    z-index: 1100;
-    background: none;
-    padding: 0;
     text-decoration: none;
+    background: none;
     border: none;
+    position: absolute;
 }
 
-.nav-links {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+.logout {
+    right: 20px;
+    top: 20px;
 }
 
 .mypage {
-    position: absolute;
-    right: 220px;
+    right: 120px;
     top: 20px;
-    font-size: 25px;
-    color: white;
-    text-decoration: none;
-    background: none;
 }
 
 .sell {
-    position: absolute;
-    right: 100px;
+    right: 200px;
     top: 8px;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
-    text-decoration: none;
     background: rgb(255, 255, 255);
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
 }
 
-
-
+/* 検索フォームを中央配置 */
 .search-container {
     flex: 1;
     display: flex;
@@ -74,7 +62,7 @@
 
 .search-form {
     display: flex;
-    width: 21%;
+    width: 50%;
     background: white;
     padding: 6px;
     border-radius: 5px;
@@ -91,11 +79,67 @@
 
 .search-button {
     padding: 6px;
-    border : none;
+    border: none;
     background-color: #007bff;
     color: white;
     border-radius: 5px;
     cursor: pointer;
 }
 
+/* 🌟 レスポンシブ対応 🌟 */
+@media screen and (max-width: 1024px) {
+    .logo-img {
+        width: 200px;
+    }
 
+    .logout,
+    .mypage,
+    .sell {
+        font-size: 18px;
+    }
+
+    .search-form {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .logo-img {
+        width: 150px;
+    }
+
+    .logout,
+    .mypage,
+    .sell {
+        position: relative;
+        right: unset;
+        top: unset;
+        font-size: 16px;
+    }
+
+    .search-form {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo-img {
+        width: 120px;
+    }
+
+    .search-form {
+        width: 90%;
+    }
+
+    .logout,
+    .mypage,
+    .sell {
+        font-size: 14px;
+    }
+}
