@@ -48,13 +48,15 @@
                 <h2 class="sell-detail__heading content_heading">商品の詳細</h2>
 
                 <div class="sell-detail__form group">
-                    <label class="sell-detail__label" for="category">カテゴリー</label>
+                    <label class="sell-detail__label">カテゴリー</label>
                         <ul class="category-list">
                             @foreach($categories as $category)
-                                <li class="category-item">{{$category->name}}</li>
+                                <li class="category-item">
+                                    <input type="checkbox" name="category_id[]" value="{{ $category->id }}" id="category_{{ $category->id }}">
+                                    <label for="category_{{ $category->id }}">{{ $category->name }}</label>
+                                </li>
                             @endforeach
                         </ul>
-                    </select>
                 </div>
 
                 <label for="condition_id">商品の状態</label>
@@ -63,7 +65,7 @@
                     @foreach ($conditions as $condition)
                         <option value="{{ $condition->id }}" {{ old('condition_id') == $condition->id ? 'selected' : ''}}>
                             {{ $condition->condition_name }}</option>
-                            @endforeach
+                    @endforeach
                 </select>
 
                 <h2 class="sell-date__heading content_heading">商品名と説明</h2>
