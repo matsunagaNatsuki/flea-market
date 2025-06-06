@@ -23,7 +23,7 @@
             <script>
             document.getElementById('image').addEventListener('change',function(event) {
                 var file = event.target.files[0];
-                var label = document.getElementById('image-label');
+                var label = document.getElementById('image-label')
                 var preview = document.getElementById('preview');
 
                 if(file) {
