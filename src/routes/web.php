@@ -24,7 +24,3 @@ Route::post('/mypage/profile', [ProfileController::class, 'editProfile']);
 Route::get('/mypage?tab=buy', [ProfileController::class, 'buyList']);
 Route::get('/mypage?tab=sell', [ProfileController::class, 'sellList']);
 Route::post('/login', [LoginController::class, 'store']);
-
-
-
-
