@@ -29,9 +29,10 @@ class SellController extends Controller
 
     public function item($sell_id) {
     $sell = Sell::find($sell_id);
+    $sell = Sell::with(['category', 'condition'])->findOrFail($sell_id);
 
     return view('item', compact('sell'));
-}
+    }
 
     public function sell(Request $request){
         $images = Storage::files('public/images');
