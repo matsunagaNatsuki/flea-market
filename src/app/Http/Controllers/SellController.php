@@ -15,11 +15,14 @@ class SellController extends Controller
     {
         $search = $request->input('search');
         $sells = Sell::query();
-        $sells = Sell::where('user_id', '!=', auth()->id())->get();
+        $sells = Sell::where('user_id', '!=', auth()->id());
 
         if ($search) {
             $sells=$sells->where('name', 'LIKE', "{$search}%");
         }
+
+        $sells = $sells->get();
+
 
         return view('index', compact('sells', 'search'));
     }
