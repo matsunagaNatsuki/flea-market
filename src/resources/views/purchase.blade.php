@@ -1,30 +1,32 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href=" asset('css/auth/purchase.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth/purchase.css') }}">
 @endsection
 
 @section('content')
 
 <div class="purchase-form__group">
-    <h2>{{ $sell->name }}</h2>
-    <p>￥{{ $sell->price }}</p>
+    <h1>{{ $sell->name }}</h1>
+    <p class="price">￥{{ $sell->price }}</p>
 </div>
 
 <div class="image-upload">
-<img src="{{ $sell->image }}" alt="{{ $sell->name }}">
+<img src="{{ $sell->image }}" alt="{{ $sell->name }}" >
 </div>
 
 <form action="/purchase/{item_id}" method="POST">
     @csrf
+    @php
+        $selectedPaymentMethod = session('payment_method', '');
+    @endphp
 
-    <h3>支払い方法</h3>
-
-    <select name="payment_method" onchange="this.form.submit()">
-        <option value="convenience_store" {{ session('payment_method') == 'convenience_store' ? 'selected' : '' }}>コンビニ払い</option>
-        <option value="credit_card" {{ session('payment_method') == 'credit_card' ? 'selected' : '' }}>カード払い</option>
-    </select>
-</form>
+    <label for="payment_method">支払い方法</label>
+        <select name="payment_method" id="payment_method" onchange="this.form.submit()">
+            <option value="" {{ $selectedPaymentMethod == '' ? 'selected' : ''}}>選択してください</option>
+            <option value="convenience_store" {{ session('payment_method') == 'convenience_store' ? 'selected' : '' }}>コンビニ払い</option>
+            <option value="credit_card" {{ session('payment_method') == 'credit_card' ? 'selected' : ''}}>カード払い</option>
+        </select>
 
 <div class="subtotal">
     <h3>小計</h3>
@@ -37,6 +39,7 @@
 
     <p>配送先</p>
     <a href="/purchase/address/{{ $sell->id }}">変更する</a>
+</form>
 
 
 
