@@ -79,6 +79,13 @@ class SellController extends Controller
     return view('purchase', compact('sell'));
     }
 
+    public function buy(Request $request) {
+        $paymentMethod =$request->input('payment_method');
+        session()->put('payment_method', $paymentMethod);
+
+        return back();
+    }
+
     public function address($item_id)
     {
         $sell = Sell::find($item_id);
