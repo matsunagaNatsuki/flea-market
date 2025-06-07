@@ -48,6 +48,3 @@
     </div>
     <a href="/purchase/address/{{ $sell->id }}">変更する</a>
 </form>
-
-
-

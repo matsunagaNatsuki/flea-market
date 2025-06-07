@@ -50,6 +50,7 @@ class ProfileController extends Controller
 
         return redirect('/mypage');
     }
+
 }
 
 

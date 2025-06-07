@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Controllers\SellController;
 
 class AddressRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class AddressRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'postal_code' => 'required|string|regex:/^\d{3}-\d{4}$/',
+            'address' => 'required|string|max:255',
+            'building' => 'nullable|string|max:255',
         ];
     }
 }
