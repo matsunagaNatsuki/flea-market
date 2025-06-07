@@ -10,11 +10,12 @@
     <div class="profile-form__inner">
         <form class="profile-form" action="/mypage/profile" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="profile-form__group">
+            <div class="profile-form__image">
                 <label class="profile-form__label" for="profile_image">画像を選択する</label>
                 <input class="profile-form__input" type="file"
                 name="image" id="image">
             </div>
+
             <div class="profile-form__group">
                 <label class="profile-form__label" for="name">ユーザー名</label>
                 <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name') }}">

@@ -26,4 +26,9 @@ class Sell extends Model
     {
         return $this->belongsToMany(Category::class, 'sell_category');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
