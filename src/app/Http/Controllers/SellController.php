@@ -71,12 +71,13 @@ class SellController extends Controller
 
     public function purchase($item_id) {
     $sell = Sell::find($item_id);
+    $user = auth()->user()->load('profile');
 
     if(!$sell) {
         abort(404);
     }
 
-    return view('purchase', compact('sell'));
+    return view('purchase', compact('sell','user'));
     }
 
     public function buy(Request $request) {
