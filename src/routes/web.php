@@ -12,7 +12,7 @@ Route::get('/item/{item_id}', [SellController::class, 'item']);
 Route::get('/purchase/{item_id}', [SellController::class,'purchase']);
 Route::post('/purchase/{item_id}', [SellController::class, 'buy']);
 Route::get('/purchase/address/{item_id}', [SellController::class,'address']);
-Route::post('/purchase/address/{item_id}', [SellController::class,'address']);
+Route::post('/purchase/address/{item_id}', [SellController::class,'UpdateAddress']);
 Route::get('/sell', [SellController::class, 'sell']);
 Route::post('/sell', [SellController::class, 'store']);
 
