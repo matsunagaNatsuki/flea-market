@@ -48,8 +48,10 @@ php artisan db:seed
 - Laravel8.83.27
 - MySQL8.0.26
 
+
+
 ## ER図
-  未作成
+  ![alt text](ER.drawio.png)
 
 ## URL
 - 開発環境　:http://localhost/
