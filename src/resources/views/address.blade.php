@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-< class="address-form">
+<div class="address-form">
     <h2 class="address-form__heading content__heading">住所の変更</h2>
     <div class="address-form__inner">
         <form class="address-form__form" action="/address" method="POST">
