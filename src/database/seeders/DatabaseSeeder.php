@@ -3,18 +3,16 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Condition;
-use App\Models\Sell;
 
 class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call([
-            UserSeeder::class,
-            ConditionsTableSeeder::class,
-            SellsTableSeeder::class,
-            CategorySeeder::class,
-        ]);
+        $this->call(UsersTableSeeder::class);
+        $this->call(ProfilesTableSeeder::class);
+        $this->call(ConditionsTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ItemsTableSeeder::class);
+        $this->call(CategoryItemsTableSeeder::class);
     }
 }

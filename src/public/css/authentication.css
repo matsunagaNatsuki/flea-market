@@ -1,0 +1,6 @@
+.link{
+    display: block; /* ブロック要素になり縦に並ぶ*/
+    margin-top: 30px;/*　上の隙間を空かす*/
+    text-align: center;
+    color: #0073cc;
+}
