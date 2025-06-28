@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Tests\HasInDatabase;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\Constrains\HasInDatabase as PackageHasInDatabase;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PackageHasDatabase::class,HasInDatabase::class);
     }
 
     /**
