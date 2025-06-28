@@ -1,29 +1,52 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
+<!-- タイトル -->
+@section('title','トップページ')
+
+<!-- css読み込み -->
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/index.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/auth/index.css') }}">
 @endsection
 
+<!-- 本体 -->
 @section('content')
-@if(isset($search) && $search != '')
-    <h2>検索結果：「{{$search}}」</h2>
-@endif
+
+@include('components.header')
+<div class="border">
+    <ul class="border__list">
+        <li><a href="{{ route('items.list', ['tab'=>'recommend', 'search'=>$search ?? '']) }}">おすすめ</a></li>
+        <!-- おすすめのタブを表示する -->
+
+        @if(!auth()->guest()) <!--　ログインしている人だけが見れるタブ -->
+        <li><a href="{{ route('items.list', ['tab'=>'mylist','search'=>$search ?? '']) }}">マイリスト</a></li>
+        <!-- マイリストのタブを表示する -->
+        @endif
+    </ul>
 </div>
-        <div class="image-container">
-            <div class="row">
-                @foreach ($sells as $sell)
-                    <div class="col-md-2 mb-4">
-                        <a href="{{ url('/item/' . $sell->id) }}" >
-                            <div class="card">
-                                <img src="{{ $sell->image }}" class="card-img-top img-fluid custom-img" alt="{{ $sell->name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $sell->name }}</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+
+<div class="container">
+    <div class="items">
+        @foreach ($items as $item)
+        <!-- 一つ一つの商品を繰り返し処理で取り出して使用する-->
+        <div class="item">
+            <a href="/item/{{$item->id}}">
+                <!-- クリックしたら商品詳細画面に飛ぶ -->
+                @if ($item->sold())<!--もし、商品が売れきれなら-->
+                <div class="item__img--container sold">
+                    <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                </div>
+                <!-- この商品が売れきれならtrueを返し、売れた時の商品の画像を表示 -->
+                @else<!--売れていなければ通常の画像を表示-->
+                <div class="item__img--container">
+                    <img src="{{ \Storage::url($item->img_url) }}" class="item__img" alt="商品画像">
+                </div>
+                @endif
+                <p class="item__name">{{$item->name}}</p>
+                <!-- pタグで商品名を画面に表示 -->
+            </a>
         </div>
+        @endforeach
+    </div>
+</div>
 @endsection
 

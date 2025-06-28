@@ -2,30 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-
 
 class Profile extends Model
 {
 
     protected $fillable = [
         'user_id',
-        'name',
-        'image',
-        'postal_code',
+        'img_url',
+        'postcode',
         'address',
         'building',
     ];
 
-    public function user(): BelongsTo
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_id')->withTimestamps();
+        return $this->belongsTo('App\Models\User');
     }
-
-    public function profile()
-    {
-        return $this->hasOne(Profile::class);
-    }
-
 }
