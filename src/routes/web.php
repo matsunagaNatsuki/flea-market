@@ -46,7 +46,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->name('verification.send');
 
-Route::get('/email/verify/{id}/{hash}', function(EmailVericationRequest $request) {
+Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $request) {
     $request->fulfill();
     session()->forget('unauthenticated_user');
     return redirect('/mypage/profile');
