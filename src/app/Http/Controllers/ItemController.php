@@ -34,7 +34,7 @@ class ItemController extends Controller
         }
 
         if($search){
-            $query->where('name','like',"%{search}%");
+            $query->where('name','like',"%{$search}%");
         }
 
         $items = $query->get();
@@ -47,15 +47,32 @@ class ItemController extends Controller
     }
 
     public function search(Request $request){
-        $search_word = $request->search;
-        // 検索フォームの<input name="search_item">から送られてきた値を$search_wordに代入
+        $search = $request->search;
+        // 検索欄に入力したキーワードを$searchが取り出す。
+        $tab = $request->query('tab','recommend');
+        // URLに中のtab=パラメータを取得して$tabに入れる。recommendは初期値
         $query = Item::query();
-        // Itemモデルのクエリビルダ（PHPを使用してSQL文を構築する仕組み）を作成する
-        $query = Item::scopeItem($query, $search_word);
-        // ItemモデルのscopeItemメソッドと繋がっていて、$search_wordを使用してクエリに検索条件を追加している
+        // Itemsテーブルに対して検索を行う準備をする
+        $query -> where('user_id', '<>',Auth::id());
+        // ログインユーザー以外が出品した商品を表示する。
+        if($tab ==='mylist'){
+            $query->select('item_id')
+            ->from('likes')
+            ->where('user_id',auth()->id());
+        }
+        // ユーザがいいねした商品ID＝likesテーブル
+        // 商品一覧＝Itemsテーブル
+        // 例：検索欄でバックを検索し、商品一覧でバックが存在し、likesテーブルにもバックが存在していたらマイリストタブに検索結果を表示する
 
+        if($search){
+            $query->where('name','like',"%{$search}%");
+        }
+        // 検索キーワードが入力されていたら、商品名にキーワードを含む商品だけを検索する。
+        // 例：ユーザーが「バック」と入力した時、「バック」という文字が入っている商品だけを表示する
         $items = $query->get();
-        //商品を検索し、該当する商品データを取得する
-        return view('index', compact('items'));
+        // $queryに積み重ねてきた「検索条件」や「いいね絞り込み」を実行して、実際にItemsテーブル商品を取り出す処理を行う
+        return view('index',compact('items','search','tab'));
+        // 'items','search','tab'の値をindex.blade.phpに渡す
     }
 }
+

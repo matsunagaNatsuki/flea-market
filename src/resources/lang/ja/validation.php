@@ -131,8 +131,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        '属性名' => [
+            'ルール名' => 'カスタムメッセージ',
         ],
     ],
 

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\SoldItem;
+use Stripe\StripeClient;
+
+
+
 
 class PurchaseMiddleware
 {
@@ -19,11 +23,12 @@ class PurchaseMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $param = $request->route()->parameter('item_id');
+        $param = $request->route()->parameter('item');
         // 現在のURLルートの中からパラメータ（商品ID）を取得している
         // 例：/purchase/23のURLなら$paramに２３が入る
 
-        $item = Item::find($param);
+        $item_id = $request->route('item');
+        $item = Item::find($item_id);
         // データベースのItemsテーブルを見て該当商品を探して$itemに入れる
         if($item->user_id == Auth::id()){
             // 商品の出品者IDとログイン中のIDが同じかチェック

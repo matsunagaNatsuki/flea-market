@@ -21,7 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sell',[ItemController::class, 'sellView']);
     Route::post('/sell',[ItemController::class, 'sellCreate']);
     Route::post('/item/like/{item_id}',[LikeController::class,'create']);
-    Route::post('item/like/{item_id}',[LikeController::class,'destroy']);
+    Route::post('item/unlike/{item_id}',[LikeController::class,'destroy']);
     Route::post('/item/comment/{item_id}',[CommentController::class,'create']);
     Route::get('/purchase/{item_id}',[PurchaseController::class,'index'])->middleware('purchase')->name('purchase.index');
     Route::post('/purchase/{item}',[PurchaseController::class,'purchase'])->middleware('purchase');
@@ -51,4 +51,8 @@ Route::get('/email/verify/{id}/{hash}', function(EmailVerificationRequest $reque
     session()->forget('unauthenticated_user');
     return redirect('/mypage/profile');
 })->name('verification.verify');
+
+Route::get('/stripe-test', function () {
+    dd(class_exists(\Stripe\StripeClient::class));
+});
 

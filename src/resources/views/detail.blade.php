@@ -77,6 +77,7 @@
                     <td>{{$item->condition->condition}}</td><!--商品の状態を表示-->
                 </tr>
             </table>
+
             <div id="comment" class="comment_section">
                 <!-- コメント数をカウントして表示する -->
                 <h3 id="count__tittle">コメント({{$item->getComments()->count()}})</h3>

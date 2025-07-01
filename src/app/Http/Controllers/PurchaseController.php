@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Exception;
@@ -21,6 +20,8 @@ class PurchaseController extends Controller
     }
 
     public function purchase($item_id, Request $request){
+        dd(class_exists(\Stripe\StripeClient::class));
+
         $item = Item::find($item_id);
         $stripe = new StripeClient(config('stripe.stripe_secret_key'));
         // .envファイルに書かれているAPIキーを取得し、決済サービスを使用する準備をする
