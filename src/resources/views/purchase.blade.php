@@ -3,7 +3,7 @@
 @section('title','購入手続き')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('/css/auth/purchase.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/auth/purchase.css')  }}">
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
     <form class="buy" id="stripe-form" action="/purchase/{{$item->id}}" method="post">
         <div class="buy__left">
             <div class="item">
-                <div class="item_img">
+                <div class="item__img">
                     <img src="{{ \Storage::url($item->img_url) }}" alt="">
                     <!-- データベースに保存された画像ファイルを表示する -->
                 </div>
@@ -28,14 +28,14 @@
                         <h3 class="purchase__title">支払い方法</h3>
                     </div>
                     <select class="purchase__value" id="payment" name="payment_method">
-                        <option value="konbini">コンビニ支払い</option>
+                        <option value="konbini">コンビニ払い</option>
                         <option value="card">クレジットカード払い</option>
                     </select>
                 </div>
                 <div class="purchase">
                     <div class="purchase__flex">
                         <h3 class="purchase__title">配送先</h3>
-                        <a href="/purchase/address/{item_id}"><button type="button" id="destination__update">変更する</button></a>
+                        <button type="button" id="destination__update">変更する</button>
                     </div>
                     <div class="purchase__value">
                         <label>〒 <input class="input_destination" name="destination_postcode" value="{{ $user->profile->postcode }}" readonly></label><br>
@@ -43,7 +43,7 @@
                         <!-- readonlyでフォームの入力ができないようにする -->
                         <input class="input_destination" name="destination_address" value="{{ $user->profile->address }}" readonly><br>
                         @if (isset($user->profile->building))
-                        <input class="input_destination" name="destination_building" value="{{$user->profile->building }}" readonly>
+                        <input class="input_destination" name="destination_building" value="{{ $user->profile->building }}" readonly>
                         @endif
                     </div>
                     <div class="setting__flex">
@@ -56,7 +56,7 @@
             <div class="buy__info">
                 <table>
                     <tr>
-                        <th class="table___header">商品代金</th>
+                        <th class="table__header">商品代金</th>
                         <td id="item__price" class="table__data" value="{{ number_format($item->price) }}">￥ {{ number_format($item->price) }}</td>
                     </tr>
                     <tr>

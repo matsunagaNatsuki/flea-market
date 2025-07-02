@@ -23,20 +23,12 @@ class PurchaseMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $param = $request->route()->parameter('item');
-        // 現在のURLルートの中からパラメータ（商品ID）を取得している
-        // 例：/purchase/23のURLなら$paramに２３が入る
-
-        $item_id = $request->route('item');
+        $item_id = $request->route('item_id');
         $item = Item::find($item_id);
-        // データベースのItemsテーブルを見て該当商品を探して$itemに入れる
         if($item->user_id == Auth::id()){
-            // 商品の出品者IDとログイン中のIDが同じかチェック
-            // もし、出品者ならitem,detailにリダイレクト（商品詳細画面に戻す）
-            return redirect()->route('item.detail',['item' => $request->item_id])->with('flash_alert', '出品者が購入することはできません');
+            return redirect()->route('item.detail',['item' => $item->id])->with('flash_alert', '出品者が購入することはできません');
         }
 
         return $next($request);
-        // 出品者なら次の処理（コントローラなど）へリクエストを流す
     }
 }
